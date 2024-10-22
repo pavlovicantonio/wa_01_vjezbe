@@ -2,7 +2,19 @@ const express = require("express");
 let app = express();
 
 app.get("/", (req, res) => {
-    res.send("Hello world!");
+    res.sendFile(__dirname + "/public/index.html");
+})
+
+app.get("/about", (req, res) => {
+    res.sendFile(__dirname + "/public/about.html");
+})
+
+app.get("/users", (req, res) => {
+    res.json([
+        { id: 1, name: "Antonio", last_name: "Pavlović" },
+        { id: 2, name: "Marko", last_name: "Marković" },
+        { id: 3, name: "Petar", last_name: "Perić" }
+    ])
 })
 
 const port = 3000;
